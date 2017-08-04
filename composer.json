@@ -1,0 +1,34 @@
+{
+  "name": "testvk/testvk",
+  "description": "This is test task for company",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Stos Dima",
+      "email": "stosdima@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "controllers\\" : "controllers/",
+      "models\\" : "models/",
+      "components\\" : "components/",
+      "exceptions\\" : "exceptions/"
+    },
+    "files": [
+      "config.php"
+    ],
+    "config": {
+      "optimize-autoloader": true
+    }
+  },
+  "require": {
+    "robmorgan/phinx": "^0.8.1",
+    "fzaninotto/faker": "^1.6",
+    "vlucas/spot2": "~2.0",
+    "nikic/fast-route": "^1.2",
+    "simple-validator/simple-validator": "1.0.*",
+    "verot/class.upload.php": "dev-master",
+    "usmanhalalit/strana": "1.*@dev"
+  }
+}
