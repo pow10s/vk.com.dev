@@ -7,4 +7,4 @@ To start the project we need:
   6. Run command ` vendor\bin\phinx migrate`(windows) or `vendor/bin/phinx migrate`(Linux)  from console
   7. Run seeder ` vendor\bin\phinx seed:run `(windows) or `vendor/bin/phinx seed:run `(Linux)  from console
   8. ADMIN_EMAIL : admin@gmail.com; ADMIN_PASSWORD : s1t2o3s4
-  9. db dump(db/vkontakte.sql) or you can use migration (point 7 and 8)
+  9. db dump(db/vkontakte.sql) or you can use migration (point 5 and 6)
