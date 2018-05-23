@@ -11,8 +11,6 @@ class IndexController extends Controller
 
     protected function showAll()
     {
-
-
         $postsMapper = spot()->mapper('models\Posts');
         $posts = $postsMapper->all()
             ->with(['comments', 'users'])

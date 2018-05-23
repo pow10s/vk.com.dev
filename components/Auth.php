@@ -54,6 +54,6 @@ class Auth
 
     public static function isAdmin()
     {
-        return true ? self::getUser()->roles->name == 'admin' : false;
+        return  (self::getUser() && self::getUser()->roles->name == 'admin')  ? true : false;
     }
 }

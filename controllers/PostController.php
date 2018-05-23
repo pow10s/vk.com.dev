@@ -16,7 +16,7 @@ class PostController extends Controller
         'getUserPost',
         'updateUserPost',
         'deleteUserPost',
-        'like'
+        'like',
     ];
 
     protected function create()
@@ -36,14 +36,19 @@ class PostController extends Controller
             $validation_result = \SimpleValidator\Validator::validate($_POST, $rules);
             $postsMapper = spot()->mapper('models\Posts');
             if ($validation_result->isSuccess()) {
-                $newPost = $postsMapper->create([
-                    'title' => $_POST['title'],
-                    'body' => $_POST['body'],
-                    'img_url' => ImgUploader::imgUploader($_FILES['img_url'], '../public/uploads/', 900, 300),
-                    'commentable' => $_POST['is_commentable'],
-                    'users_id' => Auth::getUser()->id,
-                ]);
-                header("Location: /user-profile");
+                try {
+                    $imgUrl = ImgUploader::imgUploader($_FILES['img_url'], '../public/uploads/', 900, 300);
+                    $newPost = $postsMapper->create([
+                        'title' => $_POST['title'],
+                        'body' => $_POST['body'],
+                        'img_url' => $imgUrl,
+                        'commentable' => $_POST['is_commentable'],
+                        'users_id' => Auth::getUser()->id,
+                    ]);
+                    header("Location: /user-profile");
+                } catch (\Exception $exception) {
+                    echo $exception->getMessage();
+                }
             } else {
                 var_dump($validation_result->getErrors());
             }

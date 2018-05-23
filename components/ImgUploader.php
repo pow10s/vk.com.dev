@@ -3,8 +3,18 @@
 
 namespace components;
 
+use Spot\Exception;
+
 class ImgUploader
 {
+    /**
+     * @param $file
+     * @param $path
+     * @param int $imgX
+     * @param int $imgY
+     * @return string
+     * @throws \Exception
+     */
     public static function imgUploader($file, $path, $imgX = 200, $imgY = 200)
     {
         $handle = new \upload($file);
@@ -18,6 +28,8 @@ class ImgUploader
             if ($handle->processed) {
                 $handle->clean();
                 return '/uploads/' . $time .'.jpg';
+            }else {
+                throw new \Exception($handle->error);
             }
         }
     }
